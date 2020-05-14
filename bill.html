@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Бланк "Квитанция на оплату"</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <style>
+        body { width: 210mm; margin-left: auto; margin-right: auto; border: 1px #efefef solid; font-size: 11pt;}
+        table.invoice_bank_rekv { border-collapse: collapse; border: 1px solid; }
+        table.invoice_bank_rekv > tbody > tr > td, table.invoice_bank_rekv > tr > td { border: 1px solid; }
+        table.invoice_items { border: 1px solid; border-collapse: collapse;}
+        table.invoice_items td, table.invoice_items th { border: 1px solid;}
+    </style>
+</head>
+<body>
+<div class="main">
+<table width="100%" style="font-family: Arial;">
+    <tr >
+        <td style="width: 68%; padding: 20px 0;">
+            <div style="text-align: justify; font-size: 11pt;">Внимание! Оплата данного счета означает согласие с условиями поставки товара. Счет действителен в течение 5(пяти) банковских дней, не считая дня выписки счета. Уведомление об оплате  обязательно, в противном случае НЕ ГАРАНТИРУЕТСЯ наличие товара на складе. Товар отпускается по факту прихода денег на р/с Поставщика, самовывозом, при наличии доверенности и паспорта.</div>
+        </td>
+      <td style="width: 32%; text-align: center; padding: 30px 0;"></td>
+    </tr>
+    
+</table>
+
+
+<table width="100%" border="2" style="border-collapse: collapse; width: 100%; font-family: Arial;" cellpadding="2" cellspacing="2">
+    <tr style="">
+        <td colspan="2" rowspan="2" style="min-height:13mm; width: 105mm;">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" style="height: 13mm;">
+                <tr>
+                    <td valign="top">
+                        <div>{{ context.bank }}<br>{{ context.gorod }}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="bottom" style="height: 3mm;">
+                        <div style="font-size:10pt;">Банк получателя</div>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td style="min-height:7mm;height:auto; width: 25mm;">
+            <div>БИK</div>
+        </td>
+        <td rowspan="2" style="vertical-align: top; width: 60mm;">
+            <div style=" height: 7mm; line-height: 7mm; vertical-align: middle;">{{ context.BIK }}</div>
+            <div>{{ context.account_1 }}</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 25mm;">
+            <div>Сч. №</div>
+        </td>
+    </tr>
+    <tr>
+        <td style="min-height:6mm; height:auto; width: 50mm;">
+            <div>ИНН {{ context.INN_provider }}</div>
+        </td>
+        <td style="min-height:6mm; height:auto; width: 55mm;">
+            <div>КПП {{ context.KPP_provider }}</div>
+        </td>
+        <td rowspan="2" style="min-height:19mm; height:auto; vertical-align: top; width: 25mm;">
+            <div>Сч. №</div>
+        </td>
+        <td rowspan="2" style="min-height:19mm; height:auto; vertical-align: top; width: 60mm;">
+            <div>{{ context.account_2 }}</div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" style="min-height:13mm; height:auto;">
+
+            <table border="0" cellpadding="0" cellspacing="0" style="height: 13mm; width: 105mm;">
+                <tr>
+                    <td vertical-align: middle;>
+                        <div>{{ context.name_recipient }}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="bottom" style="height: 3mm;">
+                        <div style="font-size: 10pt;">Получатель</div>
+                    </td>
+                </tr>
+            </table>
+
+        </td>
+    </tr>
+</table>
+<br/>
+
+<div style="font-weight: bold; font-size: 25pt; padding-left:5px; font-family: Arial;">
+    {{ context.today_date }}</div>
+<br/>
+
+<div style="background-color:#000000; width:100%; font-size:1px; height:2px;">&nbsp;</div>
+
+<table width="100%" style="font-family: Arial;">
+    <tr>
+        <td style="width: 30mm; vertical-align: top;">
+            <div style=" padding-left:2px; ">Поставщик:    </div>
+        </td>
+        <td>
+            <div style="font-weight:bold;  padding-left:2px;">
+                {{ context.name_company }}, ИНН {{ context.INN_provider }}, КПП {{ context.KPP_provider }},<br>
+<span style="font-weight: normal;">{{ context.address_provider }}</span>          </div>
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 30mm; vertical-align: top;">
+            <div style=" padding-left:2px;">Покупатель:    </div>
+        </td>
+        <td>
+            <div style="font-weight:bold;  padding-left:2px;">
+                {{ context.name_recipient }}, ИНН {{ context.INN_recipient }}, КПП {{ context.KPP_recipient }}<br><span style="font-weight: normal;">{{ context.address_recipient }}</span>            </div>
+        </td>
+    </tr>
+</table>
+
+
+<table border="2" width="100%" cellpadding="2" cellspacing="2" style="border-collapse: collapse; width: 100%; font-family: Arial;">
+    <thead>
+    <tr>
+        <th style="width:13mm; ">№</th>
+       
+        <th>Товары (работы, услуги)</th>
+        <th style="width:20mm; ">Кол-во</th>
+        <th style="width:17mm; ">Ед.</th>
+        <th style="width:27mm;  ">Цена</th>
+        <th style="width:27mm;  ">Сумма</th>
+    </tr>
+    </thead>
+    <tbody >
+      <tr>
+        <td style="width:13mm; text-align: center; ">1</td>
+       
+        <td>{{ context.internet }}</td>
+        <td style="width:20mm; text-align: center; ">-</td>
+        <td style="width:17mm; text-align: center; ">-</td>
+        <td style="width:27mm; text-align: center; ">{{ context.bill_internet }}</td>
+        <td style="width:27mm; text-align: center; ">{{ context.bill_internet }}</td>
+    </tr>
+      <tr>
+        <td style="width:13mm; text-align: center; ">2</td>
+       
+        <td>{{ context.phone }}</td>
+        <td style="width:20mm; text-align: center; ">-</td>
+        <td style="width:17mm; text-align: center; ">-</td>
+        <td style="width:27mm; text-align: center; ">{{ context.bill_phone }}</td>
+        <td style="width:27mm; text-align: center; ">{{ context.bill_phone }}</td>
+    </tr>
+    </tbody>
+</table>
+
+<table style="font-family: Arial;" border="0" width="100%" cellpadding="1" cellspacing="1">
+    <tr>
+        <td></td>
+        <td style="width:27mm; font-weight:bold;  text-align:right; ">Итого:</td>
+        <td style="width:27mm; font-weight:bold;  text-align: center; ">{{ context.bill }}</td>
+    </tr>
+  <tr>
+        <td></td>
+        <td style="width:37mm; font-weight:bold;  text-align:right;">Всего к оплате:</td>
+        <td style="width:27mm; font-weight:bold;  text-align: center; ">{{ context.bill }}</td>
+    </tr>
+</table>
+
+<br />
+<div style="font-family: Arial;">
+Всего наименований 2 на сумму {{ context.bill }} рублей.<br />
+{{ context.bill_letters }} {{ context.rubl }} {{ context.bill_c }} {{ context.copeck }}</div>
+<br /><br />
+<div style="background-color:#000000; width:100%; font-size:1px; height:2px;">&nbsp;</div>
+<br/>
+  <div style="font-family: Arial; font-size: 10pt;">
+1. Счет действителен в течении 5 (пяти) банковских дней, не считая дня выписки счета. В случае нарушения срока оплаты сохранение цены на товар и наличие товара на складе НЕ ГАРАНТИРУЕТСЯ.<br />
+2. Оплата данного счета означает согласие с условиями изложенными в п.1</div>
+  <br /><br />
+<div>Руководитель _______________            Трифонова Г.В.</div>
+<br/>  <br /><br />
+    
+<div>Главный бухгалтер _______________            Трифонова Г.В.</div>
+<br/>
+    
+
+<div style="width: 85mm;text-align:center;">М.П.</div>
+<br/>
+  </div>
+  <br/> <br /><br /><br/>  <br /><br /><br/>  <br /><br />
+</div>
+</body>
+</html>
